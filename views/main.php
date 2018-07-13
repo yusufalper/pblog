@@ -23,13 +23,10 @@
           <a class="nav-link" href="<?php echo ROOT_URL; ?>">Home</a>
         </li>
         <li>
-          <a class="nav-link" href="<?php echo ROOT_URL; ?>shares">Posts</a>
+          <a class="nav-link" href="<?php echo ROOT_URL; ?>posts">Posts</a>
         </li>
         <li>
-          <a class="nav-link" href="<?php echo ROOT_URL; ?>about">About Me</a>
-        </li>
-        <li>
-          <a class="nav-link" href="<?php echo ROOT_URL; ?>about">Categories</a>
+          <a class="nav-link" href="<?php echo ROOT_URL; ?>categories">Categories</a>
         </li>
       </ul>
       
@@ -38,12 +35,24 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       <ul class="navbar-nav navbar-right">
-        <li>
-          <a class="nav-link" href="<?php echo ROOT_URL; ?>users/login">Login</a>
-        </li>
-        <li>
-          <a class="nav-link" href="<?php echo ROOT_URL; ?>users/register">Register</a>
-        </li>
+        <?php if (isset($_SESSION['is_logged_in'])): ?>
+          <li>
+            <a class="nav-link" href="<?php echo ROOT_URL; ?> "> <?php echo 'Welcome, '.$_SESSION['user_data']['name']; ?></a>
+          </li>
+          <li>
+            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/usettings">Settings</a>
+          </li>
+          <li>
+            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/logout">Log Out</a>
+          </li>
+        <?php else: ?>
+          <li>
+            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/login">Login</a>
+          </li>
+          <li>
+            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/register">Register</a>
+          </li>
+        <?php endif;?>
       </ul>
 
     </div>
@@ -52,6 +61,7 @@
     <main role="main" class="container">
 
       <div class="starter-template" style="padding-top:80px;">
+        <?php Messages::display();?>
         <?php require $view;?>
       </div>
 
