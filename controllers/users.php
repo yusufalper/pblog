@@ -6,7 +6,7 @@ class Users extends Controller
         $viewModel = new UserModel();
         $this->returnView($viewModel->register(), true);
     }
-    
+
     protected function login()
     {
         $viewModel = new UserModel();
