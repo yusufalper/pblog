@@ -29,7 +29,7 @@
           <a class="nav-link" href="<?php echo ROOT_URL; ?>categories">Categories</a>
         </li>
       </ul>
-      
+
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -37,7 +37,7 @@
       <ul class="navbar-nav navbar-right">
         <?php if (isset($_SESSION['is_logged_in'])): ?>
           <li>
-            <a class="nav-link" href="<?php echo ROOT_URL; ?> "> <?php echo 'Welcome, '.$_SESSION['user_data']['name']; ?></a>
+            <a class="nav-link" href="<?php echo ROOT_URL; ?> "> <?php echo 'Welcome, ' . $_SESSION['user_data']['name']; ?></a>
           </li>
           <li>
             <a class="nav-link" href="<?php echo ROOT_URL; ?>users/usettings">Settings</a>
