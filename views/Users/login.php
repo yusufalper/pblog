@@ -6,11 +6,11 @@
         <form method="post" action="<?php $_SERVER['PHP_SELF'];?>">
             <div class="form-group">
                 <label>Email:</label>
-                <input type="text" name="email" class="form-control" />
+                <input type="email" name="email" placeholder="xxxxx@yyyy.com" class="form-control" required/>
             </div>
             <div class="form-group">
                 <label>Password:</label>
-                <input type="password" name="password" class="form-control" />
+                <input type="password" name="password" class="form-control" required/>
             </div>
             <input class="btn btn-primary" name="submit" type="submit" value="Submit" />
         </form>

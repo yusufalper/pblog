@@ -6,23 +6,23 @@
         <form method="post" action="<?php $_SERVER['PHP_SELF'];?>">
             <div class="form-group">
                 <label>Name:</label>
-                <input type="text" name="name" class="form-control" />
+                <input type="text" name="name" class="form-control" required/>
             </div>
             <div class="form-group">
                 <label>Surname:</label>
-                <input type="text" name="surname" class="form-control" />
+                <input type="text" name="surname" class="form-control" required/>
             </div>
             <div class="form-group">
                 <label>E-Mail:</label>
-                <input type="text" name="email" class="form-control" />
+                <input type="email" name="email" placeholder="xxxxx@yyyy.com" class="form-control" required/>
             </div>
             <div class="form-group">
                 <label>Phone:</label>
-                <input type="text" name="phone" class="form-control" />
+                <input type="tel" name="phone" placeholder="00-123-456-7890" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" required/>
             </div>
             <div class="form-group">
-                <label>password:</label>
-                <input type="password" name="password" class="form-control" />
+                <label>Password:</label>
+                <input type="password" name="password" class="form-control" required/>
             </div>
             <input class="btn btn-primary" name="submit" type="submit" value="Submit" />
         </form>

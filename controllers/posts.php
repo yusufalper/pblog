@@ -21,4 +21,16 @@ class Posts extends Controller
         $viewModel = new PostModel();
         $this->returnView($viewModel->details(), true);
     }
+
+    protected function myposts()
+    {
+        $viewModel = new PostModel();
+        $this->returnView($viewModel->myposts(), true);
+    }
+
+    protected function delete()
+    {
+        $viewModel = new PostModel();
+        $this->returnView($viewModel->delete(), true);
+    }
 }

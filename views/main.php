@@ -29,9 +29,19 @@
         <li>
           <a class="nav-link" href="<?php echo ROOT_URL; ?>categories">Categories</a>
         </li>
-      </ul>
+        <?php if (isset($_SESSION['is_logged_in'])): ?>
+          <li>
+            <a class="nav-link" href="<?php echo ROOT_URL; ?>posts/myposts">My Posts</a>
+          </li>
+        <?php endif;?>
 
-      <form class="form-inline my-2 my-lg-0">
+      </ul>
+      <div class="navbar-addpost">
+          <?php if (isset($_SESSION['is_logged_in'])): ?>
+            <a class="btn btn-warning" href="<?php echo ROOT_PATH; ?>posts/add">New Post</a>
+          <?php endif;?>
+      </div>
+      <form class="form-inline my-2 my-lg-0 div-search">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
@@ -40,18 +50,18 @@
           <li>
             <a class="nav-link" href="<?php echo ROOT_URL; ?> "> <?php echo 'Welcome, ' . $_SESSION['user_data']['name']; ?></a>
           </li>
-          <li>
-            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/usettings">Settings</a>
+          <li> <!-- SETTİNGS -->
+            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/usettings"><i class="fas fa-cog"></i></a>
           </li>
-          <li>
-            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/logout">Log Out</a>
+          <li> <!-- LOG OUT -->
+            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/logout"><i class="fas fa-sign-out-alt"></i></a>
           </li>
         <?php else: ?>
-          <li>
-            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/login">Login</a>
+          <li style="margin-right:1%;">
+            <a href="<?php echo ROOT_URL; ?>users/login" class="btn btn-success" role="button">Login</a>
           </li>
           <li>
-            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/register">Register</a>
+            <a href="<?php echo ROOT_URL; ?>users/register" class="btn btn-primary" role="button">Register</a>
           </li>
         <?php endif;?>
       </ul>
@@ -62,10 +72,11 @@
     <main role="main" class="container">
 
       <div class="starter-template" style="padding-top:80px;">
-        <?php Messages::display();?>
+        <?php Messages::display(); ?>
         <?php require $view;?>
       </div>
 
     </main>
   </body>
   </html>
+  

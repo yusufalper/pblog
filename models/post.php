@@ -44,4 +44,28 @@ class PostModel extends Model
         $rows = $this->single();
         return $rows;
     }
+
+    public function myposts()
+    {
+        $this->query("SELECT * FROM posts WHERE user_id=:uid ORDER BY post_date DESC");
+        $this->bind(':uid', $_SESSION['user_data']['id']);
+        $rows = $this->resultSet();
+        return $rows;
+    }
+
+    public function delete()
+    {
+        $this->query(" DELETE FROM posts WHERE id =:id ");
+        $this->bind(':id', $_POST['xid']);
+        $this->execute();
+
+        $count = $this->stmt->rowCount(); //Checking
+        if ($count > 0) {
+            Messages::setMsg('Silme DSADSDSADSADAS', 'erroASDDASr');
+            header('Location: ' . ROOT_URL . 'posts/myposts?msg=basarili');
+        } else {
+            Messages::setMsg('Silme Başarısız', 'error');
+        }
+
+    }
 }
