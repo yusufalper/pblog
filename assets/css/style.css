@@ -1,9 +1,18 @@
-.btn-posts{
-    margin-bottom: 35px;
+.btn-posts {
+  margin-bottom: 35px;
 }
-.div-posts{
-    background-color: lightgray;
-    margin-top: 20px;
-    border-radius: 20px;
-    padding: 13px 20px 25px 25px;
+.div-posts {
+  background-color: lightgray;
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 13px 20px 25px 25px;
+}
+.div-details{
+    padding-bottom: 5%;
+}
+.div-details-bottom{
+    
+}
+.div-details-buttons {
+  float: right;
 }

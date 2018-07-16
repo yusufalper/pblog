@@ -9,8 +9,14 @@
 				<small> <?php echo $item['post_date'] ?> </small>
 				<small> <?php echo $item['tags'] ?> </small>
 				<p><?php echo $item['description'] ?></p>
+				
 
-					
+				<form method="POST" action="<?php echo ROOT_PATH; ?>posts/details">
+				<input type="text" name="xid" class="form-control" value="<?php echo $item['id'] ?>" />
+				<input class="btn btn-primary" name="submit" type="submit" value="Submit" />
+				</form>
+                
+			
 			</div>
 		<?php endforeach;?>
 	

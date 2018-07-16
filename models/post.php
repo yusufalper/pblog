@@ -39,6 +39,9 @@ class PostModel extends Model
     }
     public function details()
     {
-
+        $this->query("SELECT * FROM posts WHERE id=:id");
+        $this->bind(':id', $_POST["xid"]);
+        $rows = $this->single();
+        return $rows;
     }
 }

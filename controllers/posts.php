@@ -18,6 +18,7 @@ class Posts extends Controller
 
     protected function details()
     {
-        
+        $viewModel = new PostModel();
+        $this->returnView($viewModel->details(), true);
     }
 }
