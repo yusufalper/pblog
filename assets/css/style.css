@@ -13,6 +13,15 @@
   border-radius: 20px;
   padding: 13px 20px 25px 25px;
 }
+.div-categories{
+  background-color: aquamarine;
+  border-radius: 20px;
+  padding: 2.5% 5% 5% 5%;
+}
+.category-button{
+  float: left;
+  margin-right: 8%;
+}
 .div-details{
     padding-bottom: 5%;
 }

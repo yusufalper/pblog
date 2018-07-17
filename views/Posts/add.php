@@ -9,6 +9,14 @@
                 <input type="text" name="title" class="form-control" maxlength="255"/>
             </div>
             <div class="form-group">
+                <label for="sel1">Select list:</label>
+                <select class="form-control" name="category">
+                    <?php foreach ($viewModel as $item): ?>
+                     <option value="<?php echo $item['id'] ?>"><?php echo $item['name'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div> 
+            <div class="form-group">
                 <label>Tags:</label>
                 <input type="text" name="tags" class="form-control" maxlength="255"/>
             </div>
