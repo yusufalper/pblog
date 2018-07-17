@@ -75,10 +75,10 @@ class PostModel extends Model
         // Messages gonna be Fixed
         $count = $this->stmt->rowCount(); //Checking
         if ($count > 0) {
-            Messages::setMsg('Silme DSADSDSADSADAS', 'erroASDDASr');
+            Messages::setMsg('Successfully Deleted', 'success');
             header('Location: ' . ROOT_URL . 'posts/myposts');
         } else {
-            Messages::setMsg('Silme Başarısız', 'error');
+            Messages::setMsg('An Error Occured While Deleting', 'error');
         }
     }
 }
