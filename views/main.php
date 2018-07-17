@@ -37,9 +37,9 @@
 
       </ul>
       <div class="navbar-addpost">
-          <?php if (isset($_SESSION['is_logged_in'])): ?>
-            <a class="btn btn-warning" href="<?php echo ROOT_PATH; ?>posts/add">New Post</a>
-          <?php endif;?>
+        <?php if (isset($_SESSION['is_logged_in'])): ?>
+          <a class="btn btn-warning" href="<?php echo ROOT_PATH; ?>posts/add">New Post</a>
+        <?php endif;?>
       </div>
       <form class="form-inline my-2 my-lg-0 div-search">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -56,18 +56,18 @@
           <li> <!-- LOG OUT -->
             <a class="nav-link" href="<?php echo ROOT_URL; ?>users/logout"><i class="fas fa-sign-out-alt"></i></a>
           </li>
-        <?php else: ?>
-          <li style="margin-right:1%;">
-            <a href="<?php echo ROOT_URL; ?>users/login" class="btn btn-success" role="button">Login</a>
-          </li>
-          <li>
-            <a href="<?php echo ROOT_URL; ?>users/register" class="btn btn-primary" role="button">Register</a>
-          </li>
-        <?php endif;?>
-      </ul>
+          <?php else: ?>
+            <li style="margin-right:1%;">
+              <a href="<?php echo ROOT_URL; ?>users/login" class="btn btn-success" role="button">Login</a>
+            </li>
+            <li>
+              <a href="<?php echo ROOT_URL; ?>users/register" class="btn btn-primary" role="button">Register</a>
+            </li>
+          <?php endif;?>
+        </ul>
 
-    </div>
-  </nav>
+      </div>
+    </nav>
 
     <main role="main" class="container">
 
