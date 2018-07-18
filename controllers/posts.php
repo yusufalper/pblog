@@ -10,7 +10,7 @@ class Posts extends Controller
     protected function add()
     {
         if (!isset($_SESSION['is_logged_in'])) {
-            header('Location: ' . ROOT_URL . 'shares');
+            header('Location: ' . ROOT_URL . 'posts');
         }
         $viewModel = new PostModel();
         $this->returnView($viewModel->add(), true);
@@ -24,12 +24,18 @@ class Posts extends Controller
 
     protected function myposts()
     {
+        if (!isset($_SESSION['is_logged_in'])) {
+            header('Location: ' . ROOT_URL . 'posts');
+        }
         $viewModel = new PostModel();
         $this->returnView($viewModel->myposts(), true);
     }
 
     protected function delete()
     {
+        if (!isset($_SESSION['is_logged_in'])) {
+            header('Location: ' . ROOT_URL . 'posts');
+        }
         $viewModel = new PostModel();
         $this->returnView($viewModel->delete(), true);
     }

@@ -1,4 +1,5 @@
 <?php
+#some messages and redirects with common display which included main
 class Messages
 {
     public static function setMsg($text, $type)

@@ -24,18 +24,27 @@ class Users extends Controller
 
     protected function profile()
     {
+        if (!isset($_SESSION['is_logged_in'])) {
+            header('Location: ' . ROOT_URL . 'login');
+        }
         $viewModel = new UserModel();
         $this->returnView($viewModel->profile(), true);
     }
 
     protected function settings()
     {
+        if (!isset($_SESSION['is_logged_in'])) {
+            header('Location: ' . ROOT_URL . 'login');
+        }
         $viewModel = new UserModel();
         $this->returnView($viewModel->settings(), true);
     }
 
     protected function cpassword()
     {
+        if (!isset($_SESSION['is_logged_in'])) {
+            header('Location: ' . ROOT_URL . 'login');
+        }
         $viewModel = new UserModel();
         $this->returnView($viewModel->cpassword(), true);
     }

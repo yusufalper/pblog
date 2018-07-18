@@ -10,6 +10,7 @@ class CategoryModel extends Model
 
     public function selected()
     {
+        #list selected category
         $this->query("SELECT * FROM posts WHERE category_id=:cid ORDER BY id DESC");
         $this->bind(':cid', $_POST['cid']);
         $rows = $this->resultSet();

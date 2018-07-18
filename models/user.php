@@ -3,17 +3,17 @@ class UserModel extends Model
 {
     public function register()
     {
-        //sanitize POST
+        #sanitize POST
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $password = md5(post['password']);
 
         if ($post['submit']) {
-            //blank control
+            #blank control
             if ($post['name'] == '' || $post['surname'] == '' || $post['email'] == '' || $post['phone'] == '' || $post['password'] == '') {
                 Messages::setMsg('Fill in the Blanks', 'error');
                 return;
             }
-            //insert into MYSQL
+            #insert into MYSQL
             $this->query('INSERT INTO users (name, surname, email, phone, password) VALUES (:name, :surname, :email, :phone, :password)');
             $this->bind(':name', $post['name']);
             $this->bind(':surname', $post['surname']);
@@ -22,9 +22,9 @@ class UserModel extends Model
             $this->bind(':password', $password);
             $this->execute();
 
-            //Verify
+            #Verify
             if ($this->lastInsertId()) {
-                //redirect
+                #redirect
                 header('Location: ' . ROOT_URL . 'users/login');
             }
         }
@@ -33,7 +33,6 @@ class UserModel extends Model
 
     public function login()
     {
-        //sanitize POST
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $password = md5($post['password']);
 
@@ -75,12 +74,10 @@ class UserModel extends Model
     {
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         if ($post['submit']) {
-            //blank control
             if ($post['name'] == '' || $post['surname'] == '' || $post['email'] == '' || $post['phone'] == '') {
                 Messages::setMsg('Fill in the Blanks', 'error');
                 return;
             }
-            //insert into MYSQL
             $this->query('UPDATE users SET name=:name, surname=:surname, email=:email, phone=:phone, bio=:bio  WHERE id=:id');
             $this->bind(':name', $post['name']);
             $this->bind(':surname', $post['surname']);
@@ -90,7 +87,8 @@ class UserModel extends Model
             $this->bind(':id', $_SESSION['user_data']['id']);
             $row = $this->execute();
             $count = $this->stmt->rowCount();
-
+            
+            #confirm
             if ($count > 0) {
                 Messages::setMsg('Successfully Updated', 'success');
                 Messages::goToButton('Go to My Profile', 'profile');
@@ -98,7 +96,7 @@ class UserModel extends Model
                 Messages::setMsg('Update Error', 'error');
             }
         }
-
+        #return new and update session
         $this->query("SELECT * FROM users WHERE id=:id ");
         $this->bind(':id', $_SESSION['user_data']['id']);
         $rows = $this->single();
@@ -119,6 +117,8 @@ class UserModel extends Model
             $oldpass = md5($post['oldpassword']);
             $newpass = md5($post['newpassword']);
             $cnewpass = md5($post['cnewpassword']);
+
+            #control
             if ($newpass == $cnewpass && $oldpass == $_SESSION['user_data']['pass']) {
                 $this->query("UPDATE users SET password=:password  WHERE id=:id");
                 $this->bind(':password', $newpass);

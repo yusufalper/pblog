@@ -6,6 +6,7 @@ class Bootstrap
     private $action;
     private $request;
 
+    #construct
     public function __construct($request)
     {
         $this->request = $request;
