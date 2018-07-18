@@ -1,4 +1,3 @@
-<script type="text/javascript" src="<?php echo ROOT_URL; ?>assets/js/control.js" language="javascript"></script>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Change Your Password</h3>

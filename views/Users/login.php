@@ -13,6 +13,8 @@
                 <input type="password" name="password" class="form-control" required/>
             </div>
             <input class="btn btn-primary" name="submit" type="submit" value="Submit" />
+            &nbsp;	&nbsp;	&nbsp;	&nbsp;You Have No Account? =>
+            <a class="btn btn-danger" href="<?php echo ROOT_PATH; ?>users/register">Register</a>
         </form>
     </div>
 </div>

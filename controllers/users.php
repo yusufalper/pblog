@@ -3,12 +3,18 @@ class Users extends Controller
 {
     protected function register()
     {
+        if (isset($_SESSION['is_logged_in'])) {
+            header('Location: ' . ROOT_URL . 'users/profile');
+        }
         $viewModel = new UserModel();
         $this->returnView($viewModel->register(), true);
     }
 
     protected function login()
     {
+        if (isset($_SESSION['is_logged_in'])) {
+            header('Location: ' . ROOT_URL . 'users/profile');
+        }
         $viewModel = new UserModel();
         $this->returnView($viewModel->login(), true);
     }
