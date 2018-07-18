@@ -10,6 +10,12 @@ class Messages
         }
     }
 
+    public static function goToButton($text, $where)
+    {
+        $_SESSION['goText'] = $text;
+        $_SESSION['goWhere'] = $where;
+    }
+
     public static function display()
     {
         if (isset($_SESSION['errorMsg'])) {
@@ -19,6 +25,10 @@ class Messages
         if (isset($_SESSION['successMsg'])) {
             echo "<div class='alert alert-success'>" . $_SESSION['successMsg'] . "</div>";
             unset($_SESSION['successMsg']);
+        }
+        if (isset($_SESSION['goWhere'])) {
+            echo '<a class="btn btn-primary" href="'.ROOT_PATH.'users/'.$_SESSION['goWhere'].'">'.$_SESSION['goText'].'</a>';
+            unset($_SESSION['goWhere']);
         }
     }
 }

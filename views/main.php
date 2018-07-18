@@ -48,10 +48,10 @@
       <ul class="navbar-nav navbar-right">
         <?php if (isset($_SESSION['is_logged_in'])): ?>
           <li>
-            <a class="nav-link" href="<?php echo ROOT_URL; ?> "> <?php echo 'Welcome, ' . $_SESSION['user_data']['name']; ?></a>
+            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/profile"> <?php echo 'Welcome, ' . $_SESSION['user_data']['name']; ?></a>
           </li>
           <li> <!-- SETTİNGS -->
-            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/usettings"><i class="fas fa-cog"></i></a>
+            <a class="nav-link" href="<?php echo ROOT_URL; ?>users/settings"><i class="fas fa-cog"></i></a>
           </li>
           <li> <!-- LOG OUT -->
             <a class="nav-link" href="<?php echo ROOT_URL; ?>users/logout"><i class="fas fa-sign-out-alt"></i></a>

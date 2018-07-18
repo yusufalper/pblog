@@ -21,4 +21,22 @@ class Users extends Controller
 
         header('Location: ' . ROOT_URL);
     }
+
+    protected function profile()
+    {
+        $viewModel = new UserModel();
+        $this->returnView($viewModel->profile(), true);
+    }
+
+    protected function settings()
+    {
+        $viewModel = new UserModel();
+        $this->returnView($viewModel->settings(), true);
+    }
+
+    protected function cpassword()
+    {
+        $viewModel = new UserModel();
+        $this->returnView($viewModel->cpassword(), true);
+    }
 }
