@@ -35,17 +35,17 @@ class Bootstrap
                 if (method_exists($this->controller, $this->action)) {
                     return new $this->controller($this->action, $this->request);
                 } else {
-                    //Method Fail
+                    #Method Fail
                     echo "<h1>Method does not exits!</h1>";
                     return;
                 }
             } else {
-                //Base Controller Fail
+                #Base Controller Fail
                 echo "<h1>Base Controller not found!</h1>";
                 return;
             }
         } else {
-            //Controller Class Fail
+            #Controller Class Fail
             echo "<h1>Controller Class does not exits!</h1>";
             return;
         }

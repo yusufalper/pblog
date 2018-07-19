@@ -13,19 +13,19 @@ class PostModel extends Model
         $this->query("SELECT * FROM categories");
         $rows = $this->resultSet();
 
-        //sanitize POST
+        #sanitize POST
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         if ($post['submit']) {
-            //blank control
+            #blank control
             if ($post['title'] == '' || $post['content'] == '' || $post['slink'] == '' || $post['tags'] == '') {
                 Messages::setMsg('Fill in the Blanks', 'error');
                 return;
             }
-            //categories-> select box
+            #categories-> select box
             $this->query('SELECT * FROM categories');
             $rows = $this->resultSet();
-            //insert into MYSQL
+            #insert into MYSQL
             $this->query('INSERT INTO posts (title, category_id, tags, description, content, source_link, user_id) VALUES (:title, :cid, :tags, :description, :content, :slink, :userid)');
             $this->bind(':title', $post['title']);
             $this->bind(':cid', $post['category']);
@@ -36,19 +36,19 @@ class PostModel extends Model
             $this->bind(':userid', $_SESSION['user_data']['id']);
             $this->execute();
 
-            //Verify
+            #Verify
             if ($this->lastInsertId()) {
-                //redirect
+                #redirect
                 header('Location: ' . ROOT_URL . 'posts');
             }
             return;
         }
-        //categories => addview
+        #categories => addview
         return $rows;
     }
     public function details()
     {
-        //post details
+        #post details
         $this->query("SELECT * FROM posts WHERE id=:id");
         $this->bind(':id', $_POST["xid"]);
         $rows = $this->single();
@@ -57,7 +57,7 @@ class PostModel extends Model
 
     public function myposts()
     {
-        //myposts 
+        #myposts 
         $this->query("SELECT * FROM posts WHERE user_id=:uid ORDER BY post_date DESC");
         $this->bind(':uid', $_SESSION['user_data']['id']);
         $rows = $this->resultSet();
@@ -66,14 +66,14 @@ class PostModel extends Model
 
     public function delete()
     {
-        //mypost deleting
+        #mypost deleting
         $this->query(" DELETE FROM posts WHERE id =:id ");
         $this->bind(':id', $_POST['xid']);
         $this->execute();
 
 
-        // Messages gonna be Fixed
-        $count = $this->stmt->rowCount(); //Checking
+        # Messages gonna be Fixed
+        $count = $this->stmt->rowCount(); #Checking
         if ($count > 0) {
             Messages::setMsg('Successfully Deleted', 'success');
             header('Location: ' . ROOT_URL . 'posts/myposts');

@@ -16,7 +16,7 @@ abstract class Model
         $this->stmt = $this->dbh->prepare($query);
     }
 
-    //bind the prep statements
+    #bind the prep statements
     public function bind($param, $value, $type = null)
     {
         if (is_null($type)) {
