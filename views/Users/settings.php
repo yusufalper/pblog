@@ -1,5 +1,4 @@
 <div>
-    <a class="btn btn-warning" href="<?php echo ROOT_PATH; ?>users/cpassword">Change Password</a>
 	<div class="div-posts div-details">
         <h3>Personel Informations</h3>
         <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
@@ -24,6 +23,7 @@
                 <input type="text" name="bio" class="form-control" value="<?php echo $viewModel['bio'] ?>" maxlength="255"/>
             </div>
             <input class="btn btn-primary" name="submit" type="submit" value="Update" />
+            <a class="btn btn-warning" href="<?php echo ROOT_PATH; ?>users/cpassword">Change Password</a>
         </form>
 	</div>
 </div>

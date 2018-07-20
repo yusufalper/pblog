@@ -1,7 +1,7 @@
-.navbar-addpost{
+.navbar-addpost {
   margin-right: 1%;
 }
-.div-search{
+.div-search {
   margin-right: 4%;
 }
 .btn-posts {
@@ -10,26 +10,80 @@
 .div-posts {
   background-color: lightgray;
   margin-top: 20px;
+  margin-right: 5%;
+  border-radius: 20px;
+  padding: 13px 20px 25px 25px;
+  width: 45%;
+  float: left;
+}
+.div-details{
+  background-color: lightgray;
+  margin-top: 20px;
+  margin-right: 5%;
   border-radius: 20px;
   padding: 13px 20px 25px 25px;
 }
-.div-categories{
+.general-posts{
+  padding: 0 auto;
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+.div-categories {
   background-color: aquamarine;
   border-radius: 20px;
   padding: 2.5% 5% 5% 5%;
 }
-.category-button{
+.category-button {
   float: left;
   margin-right: 8%;
 }
-.div-details{
+.div-details {
   padding-bottom: 5%;
 }
-.div-profile{
-  width: 45%!important;
-  padding-bottom: 0!important;
-  float:right;
+.div-profile {
+  width: 45% !important;
+  padding-bottom: 0 !important;
+  float: right;
 }
 .div-details-buttons {
+  float: right;
+}
+.div-comments-bio {
+  width: 20%;
+  height: auto;
+  background-color: rgb(144, 190, 144);
+  color: brown;
+  float: left;
+  text-align: center;
+  padding: 1.5%;
+  padding-bottom: 1%;
+  margin-right: 5%;
+}
+
+.div-comments-comment {
+  border-radius: 20px;
+  background-color: darkolivegreen;
+  color: honeydew;
+  padding: 1.5% 2.5% 3.5% 1.5%;
+  width: 100%;
+  height: auto;
+  float: left;
+}
+.comment-buttons {
+  background-color: rgb(96, 131, 37);
+  width: 100%;
+  height: 60px;
+  float: left;
+  margin-top: -1.8%;
+  border-radius: 0 0 15px 15px;
+  padding: 1% 5% 3% 5%;
+  color: aliceblue;
+}
+.comment-buttons-left {
+  float: left;
+}
+
+.comment-buttons-right {
   float: right;
 }

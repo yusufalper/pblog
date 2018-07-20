@@ -1,3 +1,4 @@
+<h2>Categories</h2>
 <div class="div-categories">
 	<div >
 		<?php foreach ($viewModel as $item): ?>

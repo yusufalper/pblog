@@ -1,7 +1,5 @@
 <div>
-    <?php if (isset($_SESSION['is_logged_in'])): ?>
-        <a class="btn btn-warning btn-posts" href="<?php echo ROOT_PATH; ?>posts/add">New Post</a>
-    <?php endif;?>
+    <h2>My Posts</h2>
     <?php foreach ($viewModel as $item): ?>
          <div class="div-posts">
             <h3> <?php echo $item['title']; ?> </h3>

@@ -39,4 +39,5 @@ class Posts extends Controller
         $viewModel = new PostModel();
         $this->returnView($viewModel->delete(), true);
     }
+
 }

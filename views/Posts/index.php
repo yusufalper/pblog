@@ -1,4 +1,5 @@
-<div>
+<h2>Posts</h2>
+<div class="general-posts">
 	<?php foreach ($viewModel as $item): ?>
 		<div class="div-posts">
 			<h3> <?php echo $item['title']; ?> </h3>

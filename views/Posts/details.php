@@ -1,5 +1,5 @@
 <div>
-	<div class="div-posts div-details">
+	<div class="div div-details">
 		<h3> <?php echo $viewModel['title']; ?> </h3>
 		<small> <?php echo $viewModel['post_date'] ?> </small>
 		<small> <?php echo $viewModel['tags'] ?> </small>
@@ -11,9 +11,9 @@
 			<div class="div-details-bottom">
 				<form method="POST" action="<?php echo ROOT_PATH; ?>posts/delete">
 					<?php if (isset($_SESSION['is_logged_in'])): if ($_SESSION['user_data']['id'] == $viewModel['user_id']): ?>
-						<input type="hidden" name="xid" class="form-control" value="<?php echo $viewModel['id'] ?>" />
-						<input class="btn btn-danger btn-posts" name="submit" type="submit" value="Delete this Post" />
-					<?php endif; endif;?>
+							<input type="hidden" name="xid" class="form-control" value="<?php echo $viewModel['id'] ?>" />
+							<input class="btn btn-danger btn-posts" name="submit" type="submit" value="Delete this Post" />
+						<?php endif;endif;?>
 				</form>
 			</div>
 			<div class="div-details-buttons">
