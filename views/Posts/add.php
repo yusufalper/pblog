@@ -3,7 +3,7 @@
         <h3 class="panel-title">Post Something You Want.</h3>
     </div>
     <div class="panel-body">
-        <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+        <form method="post" action="#">
             <div class="form-group">
                 <label>Title:</label>
                 <input type="text" name="title" class="form-control" maxlength="255"/>

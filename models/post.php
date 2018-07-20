@@ -9,7 +9,7 @@ class PostModel extends Model
     }
 
     public function add()
-    {   
+    {
         $this->query("SELECT * FROM categories");
         $rows = $this->resultSet();
 
@@ -57,7 +57,7 @@ class PostModel extends Model
 
     public function myposts()
     {
-        #myposts 
+        #myposts
         $this->query("SELECT * FROM posts WHERE user_id=:uid ORDER BY post_date DESC");
         $this->bind(':uid', $_SESSION['user_data']['id']);
         $rows = $this->resultSet();
@@ -70,7 +70,6 @@ class PostModel extends Model
         $this->query(" DELETE FROM posts WHERE id =:id ");
         $this->bind(':id', $_POST['xid']);
         $this->execute();
-
 
         # Messages gonna be Fixed
         $count = $this->stmt->rowCount(); #Checking

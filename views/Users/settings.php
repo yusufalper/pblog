@@ -1,7 +1,7 @@
 <div>
 	<div class="div-posts div-details">
         <h3>Personel Informations</h3>
-        <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
+        <form method="POST" action="#">
             <div class="form-group">
                 <label>Name:</label>
                 <input type="text" name="name" class="form-control" value="<?php echo $viewModel['name'] ?>" maxlength="255" required/>

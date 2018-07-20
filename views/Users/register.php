@@ -3,7 +3,7 @@
         <h3 class="panel-title">Register</h3>
     </div>
     <div class="panel-body">
-        <form method="post" action="<?php $_SERVER['PHP_SELF'];?>">
+        <form method="post" action="#">
             <div class="form-group">
                 <label>Name:</label>
                 <input type="text" name="name" class="form-control" required/>
