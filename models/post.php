@@ -43,16 +43,20 @@ class PostModel extends Model
             }
             return;
         }
-        #categories => addview
+        #categories => return
         return $rows;
     }
     public function details()
     {
+        
         #post details
-        $this->query("SELECT * FROM posts WHERE id=:id");
+        $this->query("SELECT * FROM posts WHERE post_id=:id");
+        //$this->query("SELECT * FROM comments WHERE post_id=:id");
+        //$this->query("SELECT * FROM comments FULL OUTER JOIN posts ON comments.post_id=:id");
         $this->bind(':id', $_POST["xid"]);
         $rows = $this->single();
         return $rows;
+
     }
 
     public function myposts()
@@ -67,11 +71,11 @@ class PostModel extends Model
     public function delete()
     {
         #mypost deleting
-        $this->query(" DELETE FROM posts WHERE id =:id ");
+        $this->query(" DELETE FROM posts WHERE post_id =:id ");
         $this->bind(':id', $_POST['xid']);
         $this->execute();
 
-        # Messages gonna be Fixed
+        # Messages
         $count = $this->stmt->rowCount(); #Checking
         if ($count > 0) {
             Messages::setMsg('Successfully Deleted', 'success');
@@ -79,5 +83,10 @@ class PostModel extends Model
         } else {
             Messages::setMsg('An Error Occured While Deleting', 'error');
         }
+    }
+
+    public function comments()
+    {
+        
     }
 }

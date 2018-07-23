@@ -19,9 +19,9 @@
 			<div class="div-details-bottom">
 				<form method="POST" action="<?php echo ROOT_PATH; ?>posts/delete">
 					<?php if (isset($_SESSION['is_logged_in'])): if ($_SESSION['user_data']['id'] == $viewModel['user_id']): ?>
-						<input type="hidden" name="xid" class="form-control" value="<?php echo $viewModel['id'] ?>" />
-						<input class="btn btn-danger btn-posts" name="submit" type="submit" value="Delete this Post" />
-						<?php endif;endif;?>
+								<input type="hidden" name="xid" class="form-control" value="<?php echo $viewModel['post_id'] ?>" />
+								<input class="btn btn-danger btn-posts" name="submit" type="submit" value="Delete this Post" />
+								<?php endif;endif;?>
 				</form>
 			</div>
 			<div class="div-details-buttons">
@@ -32,5 +32,22 @@
 				<a class="btn btn-info btn-posts" href="<?php echo $viewModel['source_link'] ?>">Go To The Source</a>
 			</div>
 		</div>
+		<div>
+			<div class="div div-details-comment">
+				<h2>Comments</h2>
+				<div class="div-details-bottom">
+					<?php if (isset($_SESSION['is_logged_in'])): ?>
+						<input type="hidden" name="xid" class="form-control" value="<?php echo $viewModel['post_id'] ?>" />
+						<button onclick="showFunction()" class="btn btn-danger" name="submit" type="submit"> Show </button>
+						<?php endif;?>
+				</div>
+				<div id="com">
+				<?php require "comments.php"?>
+				</div>
+
+
+			</div>
+		</div>
 	</div>
 </div>
+<script type="text/javascript" src="<?php echo ROOT_URL; ?>assets/js/control.js" language="javascript"></script>

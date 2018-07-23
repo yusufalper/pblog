@@ -23,6 +23,14 @@
   border-radius: 20px;
   padding: 13px 20px 25px 25px;
 }
+
+.div-details-comment{
+  background-color: lightgray;
+  margin-top: 20px;
+  margin-right: 5%;
+  border-radius: 20px;
+  padding: 45px 20px 0 25px;
+}
 .general-posts{
   padding: 0 auto;
   width: auto;
@@ -86,4 +94,8 @@
 
 .comment-buttons-right {
   float: right;
+}
+
+#com{
+  display: none;
 }

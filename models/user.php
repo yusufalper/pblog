@@ -9,7 +9,7 @@ class UserModel extends Model
 
         if ($post['submit']) {
             #blank control
-            if ($post['name'] == '' || $post['surname'] == '' || $post['email'] == '' || $post['phone'] == '' || $post['password'] == '') {
+            if ($post['name'] == '' || $post['surname'] == '' || $post['email'] == '' || $post['phone'] == '' || $password == '') {
                 Messages::setMsg('Fill in the Blanks', 'error');
                 return;
             }
@@ -47,7 +47,7 @@ class UserModel extends Model
             if ($row) {
                 $_SESSION['is_logged_in'] = true;
                 $_SESSION['user_data'] = array(
-                    "id" => $row['id'],
+                    "id" => $row['user_id'],
                     "name" => $row['name'],
                     "surname" => $row['surname'],
                     "email" => $row['email'],
@@ -64,7 +64,7 @@ class UserModel extends Model
     public function profile()
     {
 
-        $this->query("SELECT * FROM users WHERE id=:id ");
+        $this->query("SELECT * FROM users WHERE user_id=:id ");
         $this->bind(':id', $_SESSION['user_data']['id']);
         $rows = $this->single();
         return $rows;
@@ -78,7 +78,7 @@ class UserModel extends Model
                 Messages::setMsg('Fill in the Blanks', 'error');
                 return;
             }
-            $this->query('UPDATE users SET name=:name, surname=:surname, email=:email, phone=:phone, bio=:bio  WHERE id=:id');
+            $this->query('UPDATE users SET name=:name, surname=:surname, email=:email, phone=:phone, bio=:bio  WHERE user_id=:id');
             $this->bind(':name', $post['name']);
             $this->bind(':surname', $post['surname']);
             $this->bind(':email', $post['email']);
@@ -97,11 +97,11 @@ class UserModel extends Model
             }
         }
         #return new and update session
-        $this->query("SELECT * FROM users WHERE id=:id ");
+        $this->query("SELECT * FROM users WHERE user_id=:id ");
         $this->bind(':id', $_SESSION['user_data']['id']);
         $rows = $this->single();
         $_SESSION['user_data'] = array(
-            "id" => $rows['id'],
+            "id" => $rows['user_id'],
             "name" => $rows['name'],
             "surname" => $rows['surname'],
             "email" => $rows['email'],
@@ -120,7 +120,7 @@ class UserModel extends Model
 
             #control
             if ($newpass == $cnewpass && $oldpass == $_SESSION['user_data']['pass']) {
-                $this->query("UPDATE users SET password=:password  WHERE id=:id");
+                $this->query("UPDATE users SET password=:password  WHERE user_id=:id");
                 $this->bind(':password', $newpass);
                 $this->bind(':id', $_SESSION['user_data']['id']);
                 $row = $this->execute();
