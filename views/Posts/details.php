@@ -35,19 +35,7 @@
 		<div>
 			<div class="div div-details-comment">
 				<h2>Comments</h2>
-				<div class="div-details-bottom">
-					<?php if (isset($_SESSION['is_logged_in'])): ?>
-						<input type="hidden" name="xid" class="form-control" value="<?php echo $viewModel['post_id'] ?>" />
-						<button onclick="showFunction()" class="btn btn-danger" name="submit" type="submit"> Show </button>
-						<?php endif;?>
-				</div>
-				<div id="com">
-				<?php require "comments.php"?>
-				</div>
-
-
 			</div>
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="<?php echo ROOT_URL; ?>assets/js/control.js" language="javascript"></script>

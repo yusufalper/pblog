@@ -49,10 +49,8 @@ class PostModel extends Model
     public function details()
     {
         
-        #post details
+        #post details (comments will become)
         $this->query("SELECT * FROM posts WHERE post_id=:id");
-        //$this->query("SELECT * FROM comments WHERE post_id=:id");
-        //$this->query("SELECT * FROM comments FULL OUTER JOIN posts ON comments.post_id=:id");
         $this->bind(':id', $_POST["xid"]);
         $rows = $this->single();
         return $rows;
@@ -83,10 +81,5 @@ class PostModel extends Model
         } else {
             Messages::setMsg('An Error Occured While Deleting', 'error');
         }
-    }
-
-    public function comments()
-    {
-        
     }
 }

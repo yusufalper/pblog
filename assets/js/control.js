@@ -6,6 +6,7 @@ function showFunction() {
       x.style.display = "none";
   }
 }
+// <script type="text/javascript" src="<?php echo ROOT_URL; ?>assets/js/control.js" language="javascript"></script>
 
 var password = document.getElementById("newpassword")
   , cpassword = document.getElementById("cnewpassword");

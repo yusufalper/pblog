@@ -7,12 +7,6 @@ class Posts extends Controller
         $this->returnView($viewModel->Index(), true);
     }
 
-    protected function comments()
-    {
-        $viewModel = new PostModel();
-        $this->returnView($viewModel->comments(), true);
-    }
-
     protected function add()
     {
         if (!isset($_SESSION['is_logged_in'])) {
