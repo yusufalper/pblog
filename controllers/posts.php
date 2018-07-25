@@ -40,4 +40,22 @@ class Posts extends Controller
         $this->returnView($viewModel->delete(), true);
     }
 
+    protected function addcomment()
+    {
+        if (!isset($_SESSION['is_logged_in'])) {
+            header('Location: ' . ROOT_URL . 'posts');
+        }
+        $viewModel = new PostModel();
+        $this->returnView($viewModel->addcomment(), true);
+    }
+
+    protected function deleteComment()
+    {
+        if (!isset($_SESSION['is_logged_in'])) {
+            header('Location: ' . ROOT_URL . 'posts');
+        }
+        $viewModel = new PostModel();
+        $this->returnView($viewModel->deleteComment(), true);
+    }
+
 }

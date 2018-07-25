@@ -96,6 +96,16 @@
   float: right;
 }
 
-#com{
+#com {
   display: none;
+  margin-top:-2.5%;
+}
+.comment-bottom-content{
+  background-color: #ccc;
+}
+.comment-bottom-small{
+  margin-top:-1.4%;
+}
+.comment-bottom-comment{
+  margin-top:1%;
 }

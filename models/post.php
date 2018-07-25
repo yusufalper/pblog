@@ -10,6 +10,7 @@ class PostModel extends Model
 
     public function add()
     {
+        #categories-> select box
         $this->query("SELECT * FROM categories");
         $rows = $this->resultSet();
 
@@ -22,9 +23,6 @@ class PostModel extends Model
                 Messages::setMsg('Fill in the Blanks', 'error');
                 return;
             }
-            #categories-> select box
-            $this->query('SELECT * FROM categories');
-            $rows = $this->resultSet();
             #insert into MYSQL
             $this->query('INSERT INTO posts (title, category_id, tags, description, content, source_link, user_id) VALUES (:title, :cid, :tags, :description, :content, :slink, :userid)');
             $this->bind(':title', $post['title']);
@@ -41,20 +39,51 @@ class PostModel extends Model
                 #redirect
                 header('Location: ' . ROOT_URL . 'posts');
             }
-            return;
         }
         #categories => return
         return $rows;
     }
     public function details()
     {
-        
-        #post details (comments will become)
-        $this->query("SELECT * FROM posts WHERE post_id=:id");
-        $this->bind(':id', $_POST["xid"]);
-        $rows = $this->single();
-        return $rows;
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $this->query("SELECT comments.comment_id, comments.post_id, posts.post_id, users.user_id, users.user_id, users.name, users.email, comments.comment, comments.comment_time, posts.title, posts.category_id, posts.tags, posts.description, posts.content, posts.source_link, posts.post_date
+        FROM posts
+        LEFT JOIN comments ON comments.post_id = posts.post_id
+        LEFT JOIN users ON comments.user_id= users.user_id WHERE comments.post_id=:id ORDER BY comments.comment_time DESC;");
 
+        if (!isset($post['xid'])) {
+            $this->bind(':id', $_SESSION['post_id']);
+            $rows = $this->execute();
+            $count = $this->stmt->rowCount();
+            if ($count >= 2) {
+                $rows = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $rows;
+            } else {
+                $rows = $this->stmt->fetch(PDO::FETCH_ASSOC);
+                if (!isset($rows['comment_id'])) {
+                    $this->query('SELECT * FROM posts WHERE post_id=:id');
+                    $this->bind(':id', $_SESSION['post_id']);
+                    $rows = $this->single();
+                }
+                return $rows;
+            }
+        } else {
+            $this->bind(':id', $post["xid"]);
+            $rows = $this->execute();
+            $count = $this->stmt->rowCount();
+            if ($count >= 2) {
+                $rows = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $rows;
+            } else {
+                $rows = $this->stmt->fetch(PDO::FETCH_ASSOC);
+                if (!isset($rows['comment_id'])) {
+                    $this->query('SELECT * FROM posts WHERE post_id=:id');
+                    $this->bind(':id', $post["xid"]);
+                    $rows = $this->single();
+                }
+                return $rows;
+            }
+        }
     }
 
     public function myposts()
@@ -70,7 +99,7 @@ class PostModel extends Model
     {
         #mypost deleting
         $this->query(" DELETE FROM posts WHERE post_id =:id ");
-        $this->bind(':id', $_POST['xid']);
+        $this->bind(':id', $_POST['did']);
         $this->execute();
 
         # Messages
@@ -80,6 +109,51 @@ class PostModel extends Model
             header('Location: ' . ROOT_URL . 'posts/myposts');
         } else {
             Messages::setMsg('An Error Occured While Deleting', 'error');
+        }
+    }
+
+    public function addcomment()
+    {
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if ($post['submit']) {
+            #blank control
+            if ($post['yourcomment'] == '') {
+                Messages::setMsg('Fill in the Blanks', 'error');
+                return;
+            }
+            #insert into MYSQL
+            $this->query('INSERT INTO comments (user_id, post_id, comment) VALUES (:uid, :post_id, :comment)');
+            $this->bind(':uid', $_SESSION['user_data']['id']);
+            $this->bind(':post_id', $post['pid']);
+            $this->bind(':comment', $post['yourcomment']);
+            $this->execute();
+
+            #Verify
+            if ($this->lastInsertId()) {
+                #redirect
+
+                header('Location: ' . ROOT_URL . 'posts/details');
+            }
+            return;
+        }
+
+    }
+
+    public function deleteComment()
+    {
+        #mypost deleting
+        $this->query(" DELETE FROM comments WHERE comment_id =:id ");
+        $this->bind(':id', $_POST['comid']);
+        $this->execute();
+
+        # Messages
+        $count = $this->stmt->rowCount(); #Checking
+        if ($count > 0) {
+            Messages::setMsg('Successfully Deleted', 'success');
+            header('Location: ' . ROOT_URL . 'posts/details');
+        } else {
+            Messages::setMsg('An Error Occured While Deleting', 'error');
+            header('Location: ' . ROOT_URL . 'posts/details');
         }
     }
 }

@@ -12,7 +12,7 @@
                 <label for="sel1">Select list:</label>
                 <select class="form-control" name="category">
                     <?php foreach ($viewModel as $item): ?>
-                       <option value="<?php echo $item['category_id'] ?>"><?php echo $item['name'] ?></option>
+                       <option value="<?php echo $item['category_id'] ?>"><?php echo $item['cat_name'] ?></option>
                    <?php endforeach; ?>
                </select>
            </div> 
