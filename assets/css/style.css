@@ -5,7 +5,11 @@
   margin-right: 4%;
 }
 .btn-posts {
-  margin-bottom: 35px;
+  margin-left: 1%;
+}
+#showbutton{
+  margin-bottom: 4%;
+  margin-left: auto;
 }
 .div-posts {
   background-color: lightgray;
@@ -23,7 +27,9 @@
   border-radius: 20px;
   padding: 13px 20px 25px 25px;
 }
-
+.div-details-bottom{
+  float: left;
+}
 .div-details-comment{
   background-color: lightgray;
   margin-top: 20px;
@@ -55,7 +61,14 @@
   float: right;
 }
 .div-details-buttons {
-  float: right;
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+}
+.div-details-bright{
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
 }
 .div-comments-bio {
   width: 20%;
@@ -100,12 +113,31 @@
   display: none;
   margin-top:-2.5%;
 }
+.com-top{
+  display: flex;
+}
+.comment-column-flex{
+  display: flex;
+  flex-direction: column;
+}
 .comment-bottom-content{
-  background-color: #ccc;
+  background-color: #ccd;
+  margin-bottom: 2%;
+  border-radius: 20px;
+  padding: 8px;
 }
 .comment-bottom-small{
   margin-top:-1.4%;
 }
 .comment-bottom-comment{
   margin-top:1%;
+}
+.kap{
+  background-color:#ccd; 
+  border-radius: 20px;
+  margin-top:1%;
+  padding: 8px;
+}
+.addit{
+  margin-left: -0.3%;
 }

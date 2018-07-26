@@ -110,6 +110,10 @@ class PostModel extends Model
 
     public function delete()
     {
+        $this->query(" DELETE FROM comments WHERE post_id =:id ");
+        $this->bind(':id', $_POST['did']);
+        $this->execute();
+
         #mypost deleting
         $this->query(" DELETE FROM posts WHERE post_id =:id ");
         $this->bind(':id', $_POST['did']);

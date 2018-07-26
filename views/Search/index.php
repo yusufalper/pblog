@@ -1,5 +1,5 @@
 <div>
-    <h2>My Posts</h2>
+    <h2>The results</h2>
     <?php foreach ($viewModel as $item): 
         $_SESSION['post_id']=$item['post_id']
     ?>
