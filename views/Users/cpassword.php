@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
         <br/><br/>
-        <form method="post" action="<?php $_SERVER['PHP_SELF'];?>">
+        <form method="post" action="#"?>>
             <div class="form-group">
                 <label>Confirm Your Current Password:</label>
                 <input type="password" name="oldpassword" class="form-control" required/>
