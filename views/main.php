@@ -41,8 +41,8 @@
           <a class="btn btn-warning" href="<?php echo ROOT_PATH; ?>posts/add">New Post</a>
         <?php endif;?>
       </div>
-      <form class="form-inline my-2 my-lg-0 div-search">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0 div-search" method="POST" action="<?php echo ROOT_PATH; ?>search">
+        <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search Posts" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       <ul class="navbar-nav navbar-right">

@@ -34,9 +34,9 @@
 				<?php } ?>
 			</div>
 			<div class="div-details-buttons">
-				<?php if ($_SESSION['user_data']['id'] == $_SESSION['post_user_id']): ?>
+				<?php if (isset($_SESSION['is_logged_in'])) : if ($_SESSION['user_data']['id'] == $_SESSION['post_user_id']): ?>
 					<a class="btn btn-primary btn-posts" href="<?php echo ROOT_PATH; ?>posts/myposts">Go to My Posts</a>
-				<?php endif;?>
+				<?php endif; endif;?>
 				<a class="btn btn-warning btn-posts" href="<?php echo ROOT_PATH; ?>posts">Go to Posts</a>
 				<a class="btn btn-info btn-posts" href="<?php echo $item['source_link'] ?>">Go To The Source</a>
 			</div>

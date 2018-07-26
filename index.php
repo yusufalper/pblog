@@ -12,11 +12,14 @@ require "controllers/home.php";
 require "controllers/posts.php";
 require "controllers/users.php";
 require "controllers/categories.php";
+require "controllers/search.php";
+
 
 require 'models/home.php';
 require 'models/post.php';
 require 'models/user.php';
 require 'models/category.php';
+require 'models/search.php';
 
 
 $bootstrap = new Bootstrap($_GET);
