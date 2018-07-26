@@ -51,7 +51,7 @@ class UserModel extends Model
                     "name" => $row['name'],
                     "surname" => $row['surname'],
                     "email" => $row['email'],
-                    "pass" => $row['password'],
+                    "pass" => $row['password']
                 );
                 header('Location: ' . ROOT_URL);
             } else {
@@ -105,7 +105,7 @@ class UserModel extends Model
             "name" => $rows['name'],
             "surname" => $rows['surname'],
             "email" => $rows['email'],
-            "pass" => $rows['password'],
+            "pass" => $rows['password']
         );
         return $rows;
     }

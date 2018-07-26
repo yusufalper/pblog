@@ -10,12 +10,12 @@ class PostModel extends Model
 
     public function add()
     {
+        #sanitize POST
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
         #categories-> select box
         $this->query("SELECT * FROM categories");
         $rows = $this->resultSet();
-
-        #sanitize POST
-        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         if ($post['submit']) {
             #blank control
@@ -46,44 +46,57 @@ class PostModel extends Model
     public function details()
     {
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        $this->query("SELECT comments.comment_id, comments.post_id, posts.post_id, users.user_id, users.user_id, users.name, users.email, comments.comment, comments.comment_time, posts.title, posts.category_id, posts.tags, posts.description, posts.content, posts.source_link, posts.post_date
+        #authorization for returning back
+        #the session post_id is defined because after deleting or adding comment and returning back, there is no $post process anymore
+        $this->query('SELECT * FROM posts WHERE post_id=:id');
+        if (isset($post['xid'])) {
+            $this->bind(':id', $post['xid']);
+            $rows = $this->single();
+            $_SESSION['post_user_id'] = $rows['user_id'];
+            
+        } else {
+            $this->bind(':id', $_SESSION['post_id']);
+            $rows = $this->single();
+            $_SESSION['post_user_id'] = $rows['user_id'];
+        }
+        #the main query
+        $this->query("SELECT comments.comment_id, posts.post_id, users.user_id, users.name, users.email, comments.comment, comments.comment_time, posts.title, posts.category_id, posts.tags, posts.description, posts.content, posts.source_link, posts.post_date
         FROM posts
         LEFT JOIN comments ON comments.post_id = posts.post_id
         LEFT JOIN users ON comments.user_id= users.user_id WHERE comments.post_id=:id ORDER BY comments.comment_time DESC;");
-
+        #if there is no post (if its a returning to details)
         if (!isset($post['xid'])) {
             $this->bind(':id', $_SESSION['post_id']);
             $rows = $this->execute();
             $count = $this->stmt->rowCount();
             if ($count >= 2) {
                 $rows = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
-                return $rows;
             } else {
                 $rows = $this->stmt->fetch(PDO::FETCH_ASSOC);
+                #if there is no comment
                 if (!isset($rows['comment_id'])) {
                     $this->query('SELECT * FROM posts WHERE post_id=:id');
                     $this->bind(':id', $_SESSION['post_id']);
                     $rows = $this->single();
                 }
-                return $rows;
             }
-        } else {
-            $this->bind(':id', $post["xid"]);
+        } else { #if its a post (coming from posts-index or myposts)
+        $this->bind(':id', $post["xid"]);
             $rows = $this->execute();
             $count = $this->stmt->rowCount();
             if ($count >= 2) {
                 $rows = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
-                return $rows;
             } else {
                 $rows = $this->stmt->fetch(PDO::FETCH_ASSOC);
+                #if there is no comment
                 if (!isset($rows['comment_id'])) {
                     $this->query('SELECT * FROM posts WHERE post_id=:id');
                     $this->bind(':id', $post["xid"]);
                     $rows = $this->single();
                 }
-                return $rows;
             }
         }
+        return $rows;
     }
 
     public function myposts()
@@ -131,6 +144,10 @@ class PostModel extends Model
             #Verify
             if ($this->lastInsertId()) {
                 #redirect
+                $this->query('SELECT * FROM posts WHERE post_id=:id');
+                $this->bind(':id', $_SESSION['post_id']);
+                $rows = $this->single();
+                $_SESSION['post_user_id'] = $rows['user_id'];
 
                 header('Location: ' . ROOT_URL . 'posts/details');
             }
