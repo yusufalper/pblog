@@ -1,2 +1,2 @@
 # pblog
-Personel Blog Example With Php OOP
+Blog or Post like Example With Php OOP
