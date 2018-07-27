@@ -1,2 +1,2 @@
 # pblog
-Blog or Forum like Example With Php OOP
+Blog/Forum like Example With Php OOP
