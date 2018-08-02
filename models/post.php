@@ -110,11 +110,12 @@ class PostModel extends Model
 
     public function delete()
     {
+        #post comments deleting
         $this->query(" DELETE FROM comments WHERE post_id =:id ");
         $this->bind(':id', $_POST['did']);
         $this->execute();
 
-        #mypost deleting
+        #post deleting
         $this->query(" DELETE FROM posts WHERE post_id =:id ");
         $this->bind(':id', $_POST['did']);
         $this->execute();
@@ -126,6 +127,24 @@ class PostModel extends Model
             header('Location: ' . ROOT_URL . 'posts/myposts');
         } else {
             Messages::setMsg('An Error Occured While Deleting', 'error');
+        }
+    }
+
+    public function update()
+    {
+        #post update
+        $this->query(" UPDATE posts SET content=:content WHERE post_id=:id  ");
+        $this->bind(':content', $_POST['content']);
+        $this->bind(':id', $_POST['pid']);
+        $this->execute();
+
+        # Messages
+        $count = $this->stmt->rowCount(); #Checking
+        if ($count > 0) {
+            Messages::setMsg('Successfully Updated', 'success');
+            header('Location: ' . ROOT_URL . 'posts/myposts');
+        } else {
+            Messages::setMsg('An Error Occured While Updating', 'error');
         }
     }
 

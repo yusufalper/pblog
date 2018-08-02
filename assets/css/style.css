@@ -11,6 +11,10 @@
   margin-bottom: 4%;
   margin-left: auto;
 }
+#showbuttonup{
+  margin-bottom: 4%;
+  margin-left: auto;
+}
 .div-posts {
   background-color: lightgray;
   margin-top: 20px;
@@ -113,6 +117,10 @@
   display: none;
   margin-top:-2.5%;
 }
+#comup {
+  display: none;
+  margin-top:1%;
+}
 .com-top{
   display: flex;
 }
@@ -140,4 +148,11 @@
 }
 .addit{
   margin-left: -0.3%;
+}
+.div-del-up{
+  display: flex;
+  justify-content: space-around;
+}
+.btn-del-up{
+  margin-left: 5%;
 }
