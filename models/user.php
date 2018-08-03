@@ -26,6 +26,7 @@ class UserModel extends Model
             if ($this->lastInsertId()) {
                 #redirect
                 header('Location: ' . ROOT_URL . 'users/login');
+                exit;
             }
         }
         return;
@@ -54,6 +55,7 @@ class UserModel extends Model
                     "pass" => $row['password']
                 );
                 header('Location: ' . ROOT_URL);
+                exit;
             } else {
                 Messages::setMsg('Incorrect Login', 'error');
             }

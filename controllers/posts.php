@@ -11,6 +11,7 @@ class Posts extends Controller
     {
         if (!isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'posts');
+            exit;
         }
         $viewModel = new PostModel();
         $this->returnView($viewModel->add(), true);
@@ -26,6 +27,7 @@ class Posts extends Controller
     {
         if (!isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'posts');
+            exit;
         }
         $viewModel = new PostModel();
         $this->returnView($viewModel->myposts(), true);
@@ -35,6 +37,7 @@ class Posts extends Controller
     {
         if (!isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'posts');
+            exit;
         }
         $viewModel = new PostModel();
         $this->returnView($viewModel->delete(), true);
@@ -44,6 +47,7 @@ class Posts extends Controller
     {
         if (!isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'posts');
+            exit;
         }
         $viewModel = new PostModel();
         $this->returnView($viewModel->update(), true);
@@ -53,6 +57,7 @@ class Posts extends Controller
     {
         if (!isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'posts');
+            exit;
         }
         $viewModel = new PostModel();
         $this->returnView($viewModel->addcomment(), true);
@@ -62,6 +67,7 @@ class Posts extends Controller
     {
         if (!isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'posts');
+            exit;
         }
         $viewModel = new PostModel();
         $this->returnView($viewModel->deleteComment(), true);

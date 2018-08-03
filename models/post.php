@@ -125,6 +125,7 @@ class PostModel extends Model
         if ($count > 0) {
             Messages::setMsg('Successfully Deleted', 'success');
             header('Location: ' . ROOT_URL . 'posts/myposts');
+            exit;
         } else {
             Messages::setMsg('An Error Occured While Deleting', 'error');
         }
@@ -143,6 +144,7 @@ class PostModel extends Model
         if ($count > 0) {
             Messages::setMsg('Successfully Updated', 'success');
             header('Location: ' . ROOT_URL . 'posts/myposts');
+            exit;
         } else {
             Messages::setMsg('An Error Occured While Updating', 'error');
         }
@@ -173,6 +175,7 @@ class PostModel extends Model
                 $_SESSION['post_user_id'] = $rows['user_id'];
 
                 header('Location: ' . ROOT_URL . 'posts/details');
+                exit;
             }
             return;
         }
@@ -191,9 +194,11 @@ class PostModel extends Model
         if ($count > 0) {
             Messages::setMsg('Successfully Deleted', 'success');
             header('Location: ' . ROOT_URL . 'posts/details');
+            exit;
         } else {
             Messages::setMsg('An Error Occured While Deleting', 'error');
             header('Location: ' . ROOT_URL . 'posts/details');
+            exit;
         }
     }
 }

@@ -5,6 +5,7 @@ class Users extends Controller
     {
         if (isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'users/profile');
+            exit;
         }
         $viewModel = new UserModel();
         $this->returnView($viewModel->register(), true);
@@ -14,6 +15,7 @@ class Users extends Controller
     {
         if (isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'users/profile');
+            exit;
         }
         $viewModel = new UserModel();
         $this->returnView($viewModel->login(), true);
@@ -33,6 +35,7 @@ class Users extends Controller
     {
         if (!isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'users/login');
+            exit;
         }
         $viewModel = new UserModel();
         $this->returnView($viewModel->profile(), true);
@@ -42,6 +45,7 @@ class Users extends Controller
     {
         if (!isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'users/login');
+            exit;
         }
         $viewModel = new UserModel();
         $this->returnView($viewModel->settings(), true);
@@ -51,6 +55,7 @@ class Users extends Controller
     {
         if (!isset($_SESSION['is_logged_in'])) {
             header('Location: ' . ROOT_URL . 'users/login');
+            exit;
         }
         $viewModel = new UserModel();
         $this->returnView($viewModel->cpassword(), true);
